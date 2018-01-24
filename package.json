@@ -1,0 +1,17 @@
+{
+  "name": "reactTest",
+  "version": "1.0.0",
+  "description": "this is a demo",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "css-loader": "^0.28.9",
+    "style-loader": "^0.19.1",
+    "webpack": "^3.10.0"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
+}
