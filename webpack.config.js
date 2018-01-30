@@ -11,7 +11,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');   			// 构建js时�
 const CleanWebpackPlugin = require('clean-webpack-plugin'); 			// 每次打包自动清理旧的文件
 
 const WebpackChunkHash = require('webpack-chunk-hash'); 				// hash配置
-const HtmlWebpackPlugin = require('html-webpack-plugin'); 				// 创建html文件，确保生的js正确导入
+const HtmlWebpackPlugin = require('html-webpack-plugin'); 				// 创建html文件，确保生成的js正确导入
 const ExtractTextPlugin = require('extract-text-webpack-plugin'); 		// 打包css文件
 
 const path = require('path');
@@ -99,7 +99,11 @@ module.exports = {
    		}),
    	
    	/*
-	    new webpack.HashedModuleIdsPlugin(),					// CommonsChunkPlugin打包出的外部库hash(entry中指定的库)不受业务代码的变化影响（hash 都保持一致）
+	    new webpack.HashedModuleIdsPlugin(),					// CommonsChunkPlugin打包出的外部库hash(entry中指定的库)不受业务代码的变化影响（hash 都保持一致），推荐生产中使用
     */
+    
+    	new webpack.HotModuleReplacementPlugin(),				// 启用HMR（永远不要在生产环境下启用 HMR），启用它的接口将被暴露在 module.hot 属性下面。HMR => 编辑工具代码修改保存后，浏览器实时更新
+    															// module.hot属性下的接口accept配置后可监听某个模块更新，并设至回调
+    
 	]
 }
