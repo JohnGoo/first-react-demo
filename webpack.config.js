@@ -50,7 +50,7 @@ module.exports = {
 		]
 	},
 	resolve: {													// 解析模块时的选项
-	    extensions: ['.', '.js', '.jsx']						// 自动解析确定的扩展(能够使用户在引入模块时不带扩展)
+	    extensions: ['.js', '.jsx', 'less', 'css', 'scss']						// 自动解析确定的扩展(能够使用户在引入模块时不带扩展)
 	},
 	context: __dirname, 										// string（绝对路径！）
 	devtool: 'cheap-module-eval-source-map',					// SourceMap打包嵌入方式（开发环境推荐：cheap-module-eval-source-map；生产环境推荐：cheap-module-source-map）
