@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-route';
+import { Route, IndexRoute } from 'react-router';
 
 import App from '../pages/base/index'
 
@@ -22,11 +22,11 @@ function isLogin(nextState, replaceState) {
 const routes = (
   <Route>
     <Route path="/" component={App} onEnter={isLogin}>
-      // <IndexRoute component={Welcome} />
-      // <Route path="/table" getComponent={table} />
+      {/*<IndexRoute component={Welcome} />
+         <Route path="/table" getComponent={table} />*/}
     </Route>
     <Route path="/login" getComponent={Login} />
-    // <Route path="/register" getComponent={Register} />
+    {/*<Route path="/register" getComponent={Register} />*/}
   </Route>
 );
 

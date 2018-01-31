@@ -3,17 +3,17 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 
-import route from 'route/route';
-import Store from 'store/store';
-// import './config/config';
+import route from './route/route';
+import configure from './redux/store/store';
+import './config/config';
 
-import 'style/common';
+import './style/common.less';
 
-const store = Store()
+const store = configure({});
 
 ReactDOM.render(
 	<Provider store={store}>
-    	{ routes }
+    	{ route }
   	</Provider>,
     document.body.appendChild(document.createElement('div'))
 );

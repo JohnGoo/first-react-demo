@@ -9,7 +9,7 @@ export default class App extends Component {
     this.state = {
 
     }
-  },
+  }
   render() {
     return (
       <div>

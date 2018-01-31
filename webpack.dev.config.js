@@ -16,6 +16,7 @@ const webpackConfigDev = {
             'process.env.NODE_ENV': JSON.stringify('development'),
             IS_DEVELOPMETN: true,
         }),
+        new webpack.HotModuleReplacementPlugin(),
         new OpenBrowserPlugin({
             url: `http://localhost:${PORT}/#/login`,
         }),

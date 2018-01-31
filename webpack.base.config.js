@@ -17,7 +17,7 @@ module.exports = {
         chunkFilename: 'chunks/[name].js',
     },
     resolve: {
-        extensions: ['.js', '.json', 'css'],
+        extensions: ['.js', '.json', 'css', 'scss'],
         alias: {
             actions: join('src/redux/actions'),
             store: join('src/redux/store'),

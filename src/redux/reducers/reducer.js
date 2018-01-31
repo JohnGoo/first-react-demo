@@ -4,4 +4,4 @@ import { handleActions } from 'redux-actions';
 const reducer = combineReducers({
 
 });
-exports default reducer;
+export default reducer;

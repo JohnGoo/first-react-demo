@@ -1,9 +1,9 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { logger } from 'middleware/middleware';
-import reducer from 'reducers/reducer';
+import { logger } from '../middleware/logger';
+import reducer from '../reducers/reducer';
 
-const nextReducer = require('reducers/reducer');
+const nextReducer = require('../reducers/reducer');
 
 export default function configure(initialState) {
   // console.log('initialState', initialState)
@@ -18,7 +18,7 @@ export default function configure(initialState) {
   const store = createStoreWithMiddleware(reducer, initialState);
 
   if (module.hot) {
-    module.hot.accept('reducers/reducer', () => {
+    module.hot.accept('../reducers/reducer', () => {
       store.replaceReducer(nextReducer)
     })
   }
