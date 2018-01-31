@@ -1,16 +1,19 @@
 import react from 'react';
-import reactDom from 'react-dom';
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { Router } from 'react-router';
 
 import route from 'route/route';
-import store from 'store/store';
-import './config/config';
+import Store from 'store/store';
+// import './config/config';
 
 import 'style/common';
 
-reactDom.render(
+const store = Store()
+
+ReactDOM.render(
 	<Provider store={store}>
-		{route}
-	<Provider>,
-	document.body.appendChild(document.createElement('div'))
+    	{ routes }
+  	</Provider>,
+    document.body.appendChild(document.createElement('div'))
 );
