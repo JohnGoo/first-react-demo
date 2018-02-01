@@ -100,6 +100,7 @@ module.exports = {
         new ExtractTextPlugin('style.[hash:4].css'),
         // 将打包后的资源注入到html文件内    
         new HtmlWebpackPlugin({
+        	title: 'react',
             template: join('./src/index.html'),
         }),
         // 打包公共模块

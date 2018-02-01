@@ -22,7 +22,7 @@ import { handleActions } from 'redux-actions';
 //   }
 // };
 
-// 2、使用combineReducers的写法：(为了清晰，state[*]作为形参没有简写)
+// 2、使用combineReducers的写法：(为了清晰，state[*]表示形参)
 // const chatLog ＝ (state.chatLog, action) => {
 // 	if (action.type !== this.name) return state.chatLog;
 // 	return state.chatLog.concat(action.payload);

@@ -18,7 +18,7 @@ const webpackConfigDev = {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new OpenBrowserPlugin({
-            url: `http://localhost:${PORT}/#/login`,
+            url: `http://localhost:${PORT}/#/`,
         }),
     ],
     devtool: 'source-map',
