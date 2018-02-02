@@ -8,7 +8,6 @@ import configure from './redux/store/store';
 import './config/config';
 
 import './style/common.less';
-import './style/login.less';
 
 const store = configure({ config: global.gconfig });
 

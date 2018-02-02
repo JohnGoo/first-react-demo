@@ -1,6 +1,6 @@
 /**
-*	《本文本是关于react的理解》
-*	个人理解，持续纠错
+*	《本文本是关于react的理解》(个人理解，持续纠错)
+*	
 */
 
 
@@ -8,6 +8,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link, hashHistory } from "react-router";
 
+/****************************1、类组件创建问题******************************/
 @connect((state, props) => ({}))
 export default class App extends Component {
 	// Q:创建组件类时，为什么能够通过props传递属性？（组件能够通过this.props[*]获取到属性值）
@@ -29,3 +30,41 @@ export default class App extends Component {
 	}
 }
 
+
+
+
+/***************************2、父组件向子组件传递回调的问题******************************/
+class LoggingButton extends React.Component {
+    handleClick() {
+        console.log('this is:', this);
+    }
+    render() {
+        return (
+        	// Button子组件
+            <Button click={(e) => this.handleClick(e)}>
+        		Click me
+      		</Button>
+        );
+    }
+}
+// onClick={(e) => this.handleClick(e)}绑定方式的不合理性：
+// 官方解释：使用这个语法有个问题就是每次 LoggingButton 渲染的时候都会创建一个不同的回调函数。
+//			 在大多数情况下，这没有问题。然而如果这个回调函数作为一个属性值传入低阶组件，这些
+//			 组件可能会进行额外的重新渲染。我们通常建议在构造函数中绑定或使用属性初始化器语法
+//			 来避免这类性能问题。
+// 个人理解：每次 LoggingButton 渲染的时候都会创建一个不同的回调函数(即onClick指向的匿名函数)，
+//			 这时Button子组件的props发生了变化，引发子组件的重新渲染。
+
+
+
+
+/****************************3、ref用法总结******************************/
+// 1、为 DOM 元素添加 Ref；可以获取到对应的DOM对象
+<input type="text" ref={(input) => { this.textInput = input; }} />
+
+// 2、为类组件添加 Ref；获取已经加载的 React 实例（模拟点击效果）
+// 注意：组件必须为class构造，不能使用构造函数
+<CustomTextInput ref={(input) => { this.textInput = input; }} />
+
+// 3、父组件通过传递回调获取子组件内的DOM对象：props传递、获取
+<CustomTextInput inputRef={el => this.inputElement = el}
