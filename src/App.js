@@ -17,5 +17,5 @@ ReactDOM.render(
 	      	{ routes }
 	    </Router>
   	</Provider>,
-    document.body.appendChild(document.createElement('div'))
+    document.body
 );
