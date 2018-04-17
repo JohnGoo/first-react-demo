@@ -71,7 +71,17 @@ exports default chatReducer;
 //     );
 //   };
 // };
+
+// export default handleActions({
+// 	checkoutUserTable(state, action) {
+// 		return { ...state, isShowUserTable: !state.isShowUserTable };
+// 	},
+// 	userTableState(state, action) {
+// 		return { ...state, isShowUserTable: action.value };
+// 	},
+// }, {})
 // handleActions 理解：
-// 内部首先调用了handleAction，用于判断type，实现2中的函数
-// 然后调用了reduceReducers，用于将handleActions进行combineReducers一次，返回一个新的reducer
+// 首先取出形参对象的key，用作action的type；形参的值用做处理函数；
+// 然后调用了handleAction，传人type和处理函数，判断type，执行处理函数，返回state
+// 最后调用了reduceReducers，用于将handleActions进行combineReducers类似操作一次，返回一个新的reducer
 // redux-actions的理解 ＝> https://www.cnblogs.com/ZSG-DoBestMe/p/5375647.html

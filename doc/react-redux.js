@@ -19,6 +19,8 @@ const mapStateToProps = (state, ownProps) => {
  * @desc 'ui组件'上的方法，推送（dispatch）action给store；方法也是通过Props对象从'容器组件'传递给'ui组件',因而写'ui组件'需接收方法。
  * @param ownProps => '容器组件'的Props；dispatch => 框架内部定义的dispatch方法
  * @return  返回'ui组件'的Props的方法集合
+ *
+ * @important 如果不传入mapDispatchToProps，可以直接通过this.props.dispatch获取dispatch；原理是默认直接返回了dispatch
  */
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {

@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { logger } from 'middleware/logger';
+import logger from 'middleware/logger';
 import reducer from 'reducers/reducer';
 
 const nextReducer = require('reducers/reducer');
@@ -11,8 +11,8 @@ export default function configure(initialState) {
 
   // 创建带有中间件的createStore
   const createStoreWithMiddleware = applyMiddleware(
-    // logger,
     thunk,
+    logger,
   )(create);
 
   const store = createStoreWithMiddleware(reducer, initialState);
