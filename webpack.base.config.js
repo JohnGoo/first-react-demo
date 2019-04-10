@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin'); // webpack4不在使用,使用MiniCssExtractPlugin
 
 function join(relatedPath) {
     return path.join(__dirname, relatedPath)

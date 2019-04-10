@@ -43,16 +43,16 @@ import { handleActions } from 'redux-actions';
 
 // 3、使用combineReducers + handleActions的写法：(为了清晰，state[*]作为形参没有简写)
 // const reducers ＝ handleActions({
-// 	chatLog(state.chatLog, action) {
+// 	chatLog(state, action) {
 // 		return state.chatLog.concat(action.payload);
 // 	},
-// 	statusMessage(state.statusMessage, action) {
+// 	statusMessage(state, action) {
 // 		return action.payload;
 // 	},
-// 	userName(state.userName, action) {
+// 	userName(state, action) {
 // 		return action.payload;
 // 	},
-// })
+// }, {})
 // const chatReducer = combineReducers({
 // 	reducers
 // })
@@ -83,5 +83,41 @@ exports default chatReducer;
 // handleActions 理解：
 // 首先取出形参对象的key，用作action的type；形参的值用做处理函数；
 // 然后调用了handleAction，传人type和处理函数，判断type，执行处理函数，返回state
-// 最后调用了reduceReducers，用于将handleActions进行combineReducers类似操作一次，返回一个新的reducer
+// 最后调用了reduceReducer，返回一个新的reducer
 // redux-actions的理解 ＝> https://www.cnblogs.com/ZSG-DoBestMe/p/5375647.html
+
+// combineReducer与handleActions完全不同！！！
+// handleActions里面的reduce会处理同一个state，combineReducer只做合并用；
+let reducerADefault = {}, reducerBDefault = {};
+const reducerA = handleActions({
+	'abc'(state, action) {
+		//...
+	},
+	'123'(state, action) {
+		//...
+	},
+}, reducerADefault);
+const reducerB = handleActions({
+	'bcd'(state, action) {
+		//...
+	},
+	'234'(state, action) {
+		//...
+	},
+}, reducerBDefault);
+
+combineReducers({
+	reducerA,
+	reducerB
+});
+
+// reducerA、reducerB是存储于store的state的值，通过connect进行映射为props使用。
+// reducerADefault、reducerBDefault等同于state.reducerA、state.reducerB的初始值；
+// 'abc'、'123'、'bcd'、'234'是action的type；
+// 'abc'和'123'、'bcd'和'234'中的state和返回值分别是state.reducerA、state.reducerB的值；
+// 'abc'和'123'同时作用于state.reducerA；'bcd'和'234'同时作用于state.reducerB；
+
+// handleActions    =====> 原理是reduce()依次迭代state的值，state本身会被修改;
+// combineReducer   =====> 原理是reduce()依次修改state[key]的值，只会修改state对象的属性值;
+
+// combineReducer中state[key]的值等于handleActions的state！！！

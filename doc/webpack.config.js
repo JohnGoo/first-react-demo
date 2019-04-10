@@ -154,3 +154,29 @@ module.exports = {
     	new webpack.HotModuleReplacementPlugin(),
 	]
 }
+
+
+
+
+/** .babelrc配置说明(Babel 7)
+ *	重要的配置:
+ *	(1)@babel/core 															=> Babel compiler core(Babel编译器核心)；支持对JS语法进行编译；
+ *	(2)@babel/preset-env												=> 一个智能预设，允许您使用最新的JavaScript，而无需微观管理您的目标环境需要哪些语法转换；
+ *																								 不支持 stage-x 插件；
+ *																								 作用：接收指定的目标环境，检查环境支持的映射，编译插件列表并将其传递给Babel；
+ *																								 重要options：1、targets：预置编译环境（默认是@babel/preset-es'最新'）,即编译成的代码需要在怎样的环境运行；
+ *																														  2、useBuiltIns：见（*1*），配合@babel/polyfill对API进行编译。
+ *	(3)@babel/polyfill													=> 配置可对API进行编译；配合@babel/preset-env useBuiltIns使用；
+ *	(4)@babel/plugin-transform-runtime					=> 可以重复使用Babel注入的帮助程序代码来节省代码；
+ *																								 在开发时引入；编译代码时，引入配合@babel/runtime使用
+ *																								 配置options属性corejs为2，需配合@babel/runtime-corejs2使用，解决 Promise、Symbol 等全局变量污染的问题
+ *  (5)@babel/runtime(@babel/runtime-corejs2)		=> 在运行时引入；代码运行时，引入帮助对象以减少代码
+ *	(6)@babel/preset-react											=> 配置可对react-jsx进行编译；
+ *
+ *
+ *
+ *	(*1*)"@babel/env" => option => "useBuiltIns"("usage"/"entry"/false)
+ *			"usage": 无需如import("@babel/polyfill");根据指定环境版本、文件不兼容语法引入(按需)
+ *			"entry"：需import("@babel/polyfill");根据指定环境版本引入
+ *			false： import("@babel/polyfill")时会将库里面的代码全部打包
+ */

@@ -19,7 +19,7 @@ import { connect } from 'react-redux';
 *	class A {}
 *	A = decorator(A) || A;
 */
-@connect((state, props) => ({}));
+@connect((state, props) => ({}))
 export default class App extends Component {
 
 }

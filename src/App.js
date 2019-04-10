@@ -13,10 +13,10 @@ const store = configure({ config: global.gconfig });
 
 ReactDOM.render(
 	<Provider store={store}>
-    	<Router history={hashHistory} >
-	      	{ routes }
-	    </Router>
-  	</Provider>,
-  	document.body
-    // document.body.appendChild(document.createElement('div'))
+  	<Router history={hashHistory} >
+      { routes }
+    </Router>
+	</Provider>,
+	document.body
+  // document.body.appendChild(document.createElement('div'))
 );
